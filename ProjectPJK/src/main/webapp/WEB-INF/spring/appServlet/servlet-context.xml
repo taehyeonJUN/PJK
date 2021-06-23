@@ -45,4 +45,49 @@
 	<!-- @Service : 서비스 계층의 객체에 사용 -->
 	<!-- @Repository : DAO계층의 객체에 사용 -->
 
+
+	<interceptors>
+		<interceptor>
+			<!--모든 경로에서 인터셉터 실행 -->
+			<mapping path="/**" />
+			<!--인터셉트제외 사항 -->
+			<exclude-mapping path="/mem/login" />
+			<exclude-mapping path="/mem/add" />
+			<!--실행하는 인터셉터 -->
+			<beans:bean class="com.edu.pjk.Login.LoginInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+
+
+
+	<!-- 데이터베이스 연결을 담당하는 데이터소스로서 Common DBCP를 등록 -->
+	<beans:bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<beans:property name="driverClassName"
+			value="oracle.jdbc.OracleDriver"></beans:property>
+		<beans:property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe"></beans:property>
+		<beans:property name="username" value="PJK"></beans:property>
+		<beans:property name="password" value="1234"></beans:property>
+
+	</beans:bean>
+
+
+
+	<!-- 마이 바티스 SqlSessionFactory 객체를 생성하여 스프링에 등록 -->
+	<beans:bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 마이바티스가 사용할 데이터 베이스 연결(커넥션)을 제공하는 데이터 소스 설정 -->
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<!-- 마이바티스 설정파일 위치 -->
+		<beans:property name="configLocation"
+			value="classpath:/batis/mybatis-config.xml"></beans:property>
+	</beans:bean>
+	
+
+<!-- 	com.edu.pjk 패키지(폴더) 아래에 존재하는 @Mapper가 존재하는 인터페이스를  찾아서 그 인터페이스의 구현체를 마이바티스 구현체를 자동 생성하여 스프링에 등록 -->
+	<mybatis-spring:scan base-package="com.edu.pjk" annotation="org.apache.ibatis.annotations.Mapper"/>
+	
+	
+	
 </beans:beans>
