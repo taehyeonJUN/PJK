@@ -4,10 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-<mappers>
+	<typeAliases>
+		<typeAlias type="com.edu.pjk.Login.MemberVo" alias="MemberVo" />
+	</typeAliases>
 
-
-</mappers>
+	<mappers>
+		<mapper resource="batis/mem.xml"></mapper>
+	</mappers>
 
 
 </configuration>
