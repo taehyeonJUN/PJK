@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보 수정</title>
 </head>
 <body>
+
+	<div><h1>회원정보수정</h1></div>
 
 </body>
 </html>

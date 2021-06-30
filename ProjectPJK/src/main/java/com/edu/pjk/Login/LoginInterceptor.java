@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			return true;
 		}	
 		else {
-			/*로그인 실패시 이전 페이지로 이동함.*/
+			/*로그인 상태 아닐시 이전 페이지로 이동함.*/
 			response.sendRedirect("..");
 			return false;
 		}

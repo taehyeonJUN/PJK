@@ -4,25 +4,25 @@
 <mapper namespace="mem">
 
 	<select id="memLogin" resultType="com.edu.pjk.Login.MemberVo">
-		SELECT MEMAUTHOR FROM PJK_MEMBER WHERE memid = #{memId}, MEMCHECKDEL = 'N';
+		SELECT MEMAUTHOR FROM PJK_MEMBER WHERE memid = #{memId} AND MEMCHECKDEL = 'N'
 	</select>
 
 	<select id="memList">
 	SELECT MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 	FROM PJK_MEMBER
-	WHERE MEMCHECKDEL = 'N';
+	WHERE MEMCHECKDEL = 'N'
 	</select>
 
 	<select id="memSeletOne" parameterType="com.edu.pjk.Login.MemberVo" resultType="com.edu.pjk.Login.MemberVo">
 	SELECT MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 	  FROM PJK_MEMBER
-	 WHERE MEMCHECKDEL = 'N' AND MEMID = #{memId};
+	 WHERE MEMCHECKDEL = 'N' AND MEMID = #{memId}
 	</select>
 
 	<update id="memEdit1">
 		UPDATE PJK_MEMBER
 		SET MEMCHECKDEL = 'Y'
-		WHERE MEMID = #{memId} AND MEMCHECKDEL = 'N';
+		WHERE MEMID = #{memId} AND MEMCHECKDEL = 'N'
 	</update>
 
 	<insert id="memEdit2">
@@ -32,12 +32,12 @@
 		VALUES(SEQ_MEMNO.NEXTVAL,'','','',(
 											SELECT memCount
 											  FROM PJK_MEMBER
-										  	 WHERE memid = #{memId} AND memCheckDel = 'Y')+1);
+										  	 WHERE memid = #{memId} AND memCheckDel = 'Y')+1)
 	</insert>
 	
 	<insert id="memJoin" parameterType="com.edu.pjk.Login.MemberVo">
 		INSERT INTO PJK_MEMBER(MEMNO,MEMID,MEMPASS,MEMNAME) 
-	  		 VALUES(SEQ_MEMNO.NEXTVAL, #{memId}, #{memPass}, #{memName});
+	  		 VALUES(SEQ_MEMNO.NEXTVAL, #{memId}, #{memPass}, #{memName})
 	</insert>
 	
 </mapper>

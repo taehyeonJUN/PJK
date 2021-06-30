@@ -52,7 +52,8 @@
 			<mapping path="/**" />
 <!-- 			인터셉트제외 사항 -->
 			<exclude-mapping path="/" />
-			<exclude-mapping path="/mem/add" />
+			<exclude-mapping path="/mem/login" />
+			<exclude-mapping path="/mem/memJoin" />
 <!-- 			실행하는 인터셉터 -->
 			<beans:bean class="com.edu.pjk.Login.LoginInterceptor"></beans:bean>
 		</interceptor>

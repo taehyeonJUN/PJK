@@ -18,6 +18,8 @@ import com.edu.pjk.Login.service.MemberService;
 @RequestMapping("/mem")
 public class MemController {
 	
+	final String path = "mem/";
+	
 	@Autowired
 	MemberService memberService;
 	
@@ -25,7 +27,7 @@ public class MemController {
 	@GetMapping("/login")
 	public String login() {
 		
-		return "login";
+		return "mem/login";
 	}
 	
 	
@@ -35,7 +37,7 @@ public class MemController {
 		MemberVo memlogin = memberService.memlogin(memberVo);
 		
 		if (memlogin == null) {
-			return "login";
+			return "redirect:/";
 		}
 		else
 			session.setAttribute("user", memlogin);
@@ -56,7 +58,7 @@ public class MemController {
 		model.put("list", memListVo);
 		
 		
-		return "memList";
+		return path + "memList";
 	}
 	
 	
@@ -71,7 +73,7 @@ public class MemController {
 		map.put("edit", memberVo);
 		
 		
-		return "memEdit";
+		return path+"memEdit";
 	}
 	
 	/*회원정보 수정*/
@@ -80,7 +82,7 @@ public class MemController {
 
 		memberService.memEdit(memberVo);
 		
-		return "memList";
+		return path +"memList";
 	}
 	
 	
@@ -93,7 +95,7 @@ public class MemController {
 		memberService.memDel(vo);
 		
 		
-		return "memList";
+		return path + "memList";
 	}
 	
 	
@@ -101,7 +103,7 @@ public class MemController {
 	@GetMapping("/memJoin")
 	public String memJoin(){
 		
-		return "memJoin";
+		return path + "memJoin";
 	}
 	
 	

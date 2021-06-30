@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인</title>
 </head>
 <body>
-
+	<div><h1>여기가 메인화면!</h1></div>
 </body>
 </html>

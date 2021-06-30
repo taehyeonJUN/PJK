@@ -16,7 +16,7 @@
 <!-- 	kr.ac.kopo 패키지 아래에 있는 클래스인 Dao클래스 안에서 마이바티스가 출력하는 로그를 보기 위해서는 로그 레벨을 낮출필요가 있다 
 		로스레벨 :  FATAL >ERROR> WARNINFO> DEBUG> TRACE	-->
 	<logger name="com.edu.pjk">
-		<level value="trace" />
+		<level value="info" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
