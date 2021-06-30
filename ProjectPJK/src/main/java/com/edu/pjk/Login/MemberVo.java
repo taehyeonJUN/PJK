@@ -3,11 +3,17 @@ package com.edu.pjk.Login;
 import java.util.Date;
 
 public class MemberVo {
+	/*회원번호*/
+	private String memNo;
+	
 	/*회원 ID*/
 	private String memId;
 	
 	/*비밀번호*/
 	private String memPass;
+	
+	/*이름*/
+	private String memName;
 	
 	/*가입일*/
 	private Date memJoinDate;
@@ -57,6 +63,19 @@ public class MemberVo {
 	public void setMemCount(int memCount) {
 		this.memCount = memCount;
 	}
+	public String getMemNo() {
+		return memNo;
+	}
+	public void setMemNo(String memNo) {
+		this.memNo = memNo;
+	}
+	public String getMemName() {
+		return memName;
+	}
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+	
 	
 	
 	

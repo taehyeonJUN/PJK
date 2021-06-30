@@ -17,15 +17,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		/*세션정보를 가져옴*/
 		HttpSession session = request.getSession();
 
-		/*가져온 세션 정보로 로그인여부 확인 - 권한이 user 혹은 admin일 경우*/
+		/*가져온 세션 정보로 로그인여부 확인 */
 		MemberVo memVo = (MemberVo)session.getAttribute("user");
-		if ("admin".equals(memVo.getMemAuthor())||"user".equals(memVo.getMemAuthor())) {
+		
+		/*로그인 여부를 확인하는 조건문*/
+		if(memVo != null) {
+			
+			/*권한을 확인하는 조건문 - 추후 수정필요할듯*/
+			if ("admin".equals(memVo.getMemAuthor())||"user".equals(memVo.getMemAuthor())) {
+				
+				}	
 			return true;
-		}	
+		}
+		/*로그인 상태 아닐시 초기 페이지로 이동*/
 		else {
-			/*로그인 상태 아닐시 이전 페이지로 이동함.*/
-			response.sendRedirect("..");
-			return false;
+		response.sendRedirect("/");
+		return false;
 		}
 
 	}

@@ -65,13 +65,13 @@ public class MemController {
 	/*회원정보 수정 페이지*/
 	@GetMapping("/memEdit")
 	public String memEdit(HttpSession session, Map map){
-		
+		System.out.println(session.getAttribute("user"));
 		MemberVo vo=(MemberVo) session.getAttribute("user");
+		System.out.println("++++++++++++++++++++정보를 못가져오네?++++++++++++++++++++++"+vo.getMemId());
 		
 		MemberVo memberVo = memberService.memSeletOne(vo);
 		
 		map.put("edit", memberVo);
-		
 		
 		return path+"memEdit";
 	}
@@ -108,12 +108,12 @@ public class MemController {
 	
 	
 	/*회원가입*/
-	@PostMapping
+	@PostMapping("/memJoin")
 	public String memJoin(MemberVo memberVo) {
 		
 		memberService.memJoin(memberVo);
 		
-		return "login";
+		return path + "login";
 	}
 	
 	

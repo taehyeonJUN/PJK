@@ -26,7 +26,7 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberVo memSeletOne(MemberVo vo) {
-		return sql.selectOne("mem.selectOne", vo);
+		return sql.selectOne("mem.memSeletOne", vo);
 	}
 
 	@Override

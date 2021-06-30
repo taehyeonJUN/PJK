@@ -4,16 +4,20 @@
 <mapper namespace="mem">
 
 	<select id="memLogin" resultType="com.edu.pjk.Login.MemberVo">
-		SELECT MEMAUTHOR FROM PJK_MEMBER WHERE memid = #{memId} AND MEMCHECKDEL = 'N'
+		SELECT MEMAUTHOR 
+		  FROM PJK_MEMBER 
+		  WHERE memid = #{memId} 
+		  		AND memPass = #{memPass} 
+		  		AND MEMCHECKDEL = 'N'
 	</select>
 
-	<select id="memList">
-	SELECT MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
+	<select id="memList" resultType="MemberVo">
+	SELECT MEMNO,MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 	FROM PJK_MEMBER
 	WHERE MEMCHECKDEL = 'N'
 	</select>
 
-	<select id="memSeletOne" parameterType="com.edu.pjk.Login.MemberVo" resultType="com.edu.pjk.Login.MemberVo">
+	<select id="memSeletOne" parameterType="MemberVo" resultType="MemberVo">
 	SELECT MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 	  FROM PJK_MEMBER
 	 WHERE MEMCHECKDEL = 'N' AND MEMID = #{memId}
