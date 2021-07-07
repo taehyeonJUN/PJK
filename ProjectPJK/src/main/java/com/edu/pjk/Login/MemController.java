@@ -65,9 +65,7 @@ public class MemController {
 	/*회원정보 수정 페이지*/
 	@GetMapping("/memEdit")
 	public String memEdit(HttpSession session, Map map){
-		System.out.println(session.getAttribute("user"));
 		MemberVo vo=(MemberVo) session.getAttribute("user");
-		System.out.println("++++++++++++++++++++정보를 못가져오네?++++++++++++++++++++++"+vo.getMemId());
 		
 		MemberVo memberVo = memberService.memSeletOne(vo);
 		

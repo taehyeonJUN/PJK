@@ -3,8 +3,8 @@
 
 <mapper namespace="mem">
 
-	<select id="memLogin" resultType="com.edu.pjk.Login.MemberVo">
-		SELECT MEMAUTHOR 
+	<select id="memLogin" resultType="MemberVo">
+	SELECT MEMNO,MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 		  FROM PJK_MEMBER 
 		  WHERE memid = #{memId} 
 		  		AND memPass = #{memPass} 
@@ -39,7 +39,7 @@
 										  	 WHERE memid = #{memId} AND memCheckDel = 'Y')+1)
 	</insert>
 	
-	<insert id="memJoin" parameterType="com.edu.pjk.Login.MemberVo">
+	<insert id="memJoin" parameterType="MemberVo">
 		INSERT INTO PJK_MEMBER(MEMNO,MEMID,MEMPASS,MEMNAME) 
 	  		 VALUES(SEQ_MEMNO.NEXTVAL, #{memId}, #{memPass}, #{memName})
 	</insert>
