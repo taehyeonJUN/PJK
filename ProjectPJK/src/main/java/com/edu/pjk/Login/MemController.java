@@ -80,20 +80,22 @@ public class MemController {
 
 		memberService.memEdit(memberVo);
 		
-		return path +"memList";
+		return "main/main";
 	}
 	
 	
 	
 	/*회원탈퇴(논리)*/
 	@GetMapping("/memDel")
-	public String memDel(HttpSession session, Map map){
+	public String memDel(HttpSession session){
 		MemberVo vo = (MemberVo) session.getAttribute("user");
 		
 		memberService.memDel(vo);
 		
+		//탈퇴 후 세션정보 삭제
+		session.invalidate();
 		
-		return path + "memList";
+		return "redirect:/";
 	}
 	
 	

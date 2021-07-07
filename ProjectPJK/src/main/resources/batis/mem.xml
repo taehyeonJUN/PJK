@@ -3,7 +3,7 @@
 
 <mapper namespace="mem">
 
-	<select id="memLogin" resultType="MemberVo">
+	<select id="memLogin" resultType="MemberVo" parameterType="MemberVo">
 	SELECT MEMNO,MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 		  FROM PJK_MEMBER 
 		  WHERE memid = #{memId} 
@@ -18,30 +18,40 @@
 	</select>
 
 	<select id="memSeletOne" parameterType="MemberVo" resultType="MemberVo">
-	SELECT MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
+	SELECT MEMNO, MEMID, MEMPASS, MEMNAME, MEMJOINDATE, MEMAUTHOR
 	  FROM PJK_MEMBER
 	 WHERE MEMCHECKDEL = 'N' AND MEMID = #{memId}
 	</select>
 
-	<update id="memEdit1">
+	<update id="memEdit1" parameterType="MemberVo">
 		UPDATE PJK_MEMBER
 		SET MEMCHECKDEL = 'Y'
 		WHERE MEMID = #{memId} AND MEMCHECKDEL = 'N'
 	</update>
 
-	<insert id="memEdit2">
+	<insert id="memEdit2" parameterType="MemberVo">
 
-
-		INSERT INTO PJK_MEMBER(MEMNO,MEMID,MEMPASS,MEMNAME,memCount)
-		VALUES(SEQ_MEMNO.NEXTVAL,'','','',(
-											SELECT memCount
+		INSERT INTO PJK_MEMBER(MEMNO,MEMID,MEMPASS,MEMNAME,memCount,MEMJOINDATE)
+		VALUES(SEQ_MEMNO.NEXTVAL,#{memId},#{memPass},#{memName},(
+											SELECT MAX(memCount)
 											  FROM PJK_MEMBER
-										  	 WHERE memid = #{memId} AND memCheckDel = 'Y')+1)
+										  	 WHERE memid = #{memId} AND memCheckDel = 'Y')+1,(SELECT Min(MEMJOINDATE) 
+										  													FROM PJK_MEMBER 
+										  													WHERE memid = #{memId}))
 	</insert>
 	
 	<insert id="memJoin" parameterType="MemberVo">
 		INSERT INTO PJK_MEMBER(MEMNO,MEMID,MEMPASS,MEMNAME) 
 	  		 VALUES(SEQ_MEMNO.NEXTVAL, #{memId}, #{memPass}, #{memName})
 	</insert>
+	
+<!-- 계정탈퇴 - 논리 -->
+	<update id="memDel" parameterType="MemberVo">
+		
+		UPDATE PJK_MEMBER
+		   SET MEMCHECKDEL = 'Y' , memCount = memCount + 1
+		 WHERE MEMID = #{memId} AND MEMCHECKDEL = 'N'
+
+	</update>
 	
 </mapper>

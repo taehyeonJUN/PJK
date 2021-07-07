@@ -152,6 +152,8 @@
 		</dependency>
 
 
+
+
 		<!-- Jackson -->
 		<!-- ajax 통신을 위한, 자바객체와 json문자열 간의 상호 반환 기능을 가진 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
@@ -160,6 +162,8 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.11.1</version>
 		</dependency>
+
+
 
 
 		<!-- Test -->

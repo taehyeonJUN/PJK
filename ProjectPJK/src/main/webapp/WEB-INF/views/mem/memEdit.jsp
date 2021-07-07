@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,25 +12,20 @@
 	<div>
 		<h1>회원정보수정</h1>
 		<div>
-			<table border="1">
-				<thead>
-					<tr>
-						<th>회원번호</th>
-						<th>아이디</th>
-						<th>이름</th>
-						<th>가입일</th>
-					</tr>
-				</thead>
-				<tbody>
-						<tr>
-							<td>${edit.memNo}</td>
-							<td>${edit.memId}</td>
-							<td>${edit.memName}</td>
-							<td><fmt:formatDate value="${edit.memJoinDate}" pattern="YYYY-MM-dd" /></td>
-						</tr>
-				</tbody>
-
-			</table>
+		<form action="memEdit" method="post">
+			<div><input type="text" name="memNo" value="${edit.memNo}" readonly="readonly" /> </div>
+			<div><input type="text" name="memId" value="${edit.memId}" readonly="readonly" /> </div>
+			<div><input type="text" name="memName" value="${edit.memName}" /> </div>
+			<div><input type="password" name="memPass" value="${edit.memPass}" /> </div>
+			<div> <fmt:formatDate value="${edit.memJoinDate}" pattern="yyyy/MM/dd"/></div>
+			<div><input type="submit"/ value="수정"></div>
+		</form>
+		
+		<div>
+			<button><a href="/mem/memDel">회원 탈퇴</a></button>
+		</div>
+	 
+	
 		</div>
 	</div>
 </body>
