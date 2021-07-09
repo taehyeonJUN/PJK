@@ -6,10 +6,12 @@
 
 	<typeAliases>
 		<typeAlias type="com.edu.pjk.Login.MemberVo" alias="MemberVo" />
+		<typeAlias type="com.edu.pjk.post.PostVo" alias="PostVo" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="batis/mem.xml"></mapper>
+		<mapper resource="batis/post.xml"></mapper>
 	</mappers>
 
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="post">
+
+	<select id="PostList">
+		/*페이지네이션?*/
+		/*게시글 조회(최근 5개만)*/
+		SELECT
+		postNo,postId,postTitle,postContents,postUpDate
+		FROM (SELECT
+		postNo,postId,postTitle,postContents,postUpDate
+		FROM
+		PJK_POST
+		WHERE
+		POSTCHECKDEL ='N'
+		ORDER BY postUpDate DESC)
+		WHERE ROWNUM  <![CDATA[<]]>=5
+	</select>
+
+
+	<insert id="PostAdd">
+		/*게시글 작성*/
+		INSERT INTO PJK_POST(postNo,
+		postId,postTitle,postContents)
+		VALUES (SEQ_POSTNO.nextval, #{postId},#{postTitle},#{postContents})
+	</insert>
+
+	<select id="PostSelect">
+		SELECT postNo,postId,postTitle,postContents,postUpDate
+		FROM PJK_POST
+		WHERE postId =#{postId}
+	</select>
+
+	<update id="PostEdit">
+		/*게시글 수정 -물리*/
+		UPDATE PJK_POST SET
+		postTitle=#{postTitle} ,postContents=#{postContents} WHERE postNo = #{postNo} AND POSTCHECKDEL='N'
+	</update>
+
+
+	<delete id="PostDelete">
+		/*게시글 삭제-물리*/
+		DELETE FROM PJK_POST WHERE
+		POSTNO=#{postNo}
+	</delete>
+
+
+</mapper>
