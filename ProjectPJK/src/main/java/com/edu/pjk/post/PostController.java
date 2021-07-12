@@ -3,9 +3,14 @@ package com.edu.pjk.post;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.edu.pjk.Login.MemberVo;
 import com.edu.pjk.post.service.PostService;
 
 
@@ -27,17 +32,27 @@ public class PostController {
 	}
 
 
-
 	/*게시글 작성*/
-	public String PostAdd(PostVo postVo) {
+	@GetMapping("/add")
+	public String AddForm(PostVo postVo) {
 
+		return "/post/add";
+	}
+	
+	/*게시글 작성*/
+	@PostMapping("/add")
+	public String PostAdd(PostVo postVo, HttpSession session) {
+		
+		MemberVo memVo = (MemberVo)session.getAttribute("user");
+		postVo.setPostId(memVo.getMemId());
 		postService.PostAdd(postVo);
 
-		return "";
+		return "/post/add";
 	}
 
 	/*게시글 수정 페이지*/
-	public String PostSelect(PostVo postVo, Map map) {
+	@GetMapping("/editForm")
+	public String PostSelect(PostVo postVo) {
 
 		PostVo Vo = postService.PostSelect(postVo);
 
@@ -45,6 +60,7 @@ public class PostController {
 	}	
 
 	/*게시글 수정*/
+	@PostMapping("/edit")
 	public String PostEdit(PostVo postVo, Map map) {
 
 		postService.PostEdit(postVo);

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>메인</title>
 </head>
-<!-- 부트스트랩 primary 버튼 -->
+<!-- 부트스트랩 primary 버튼 - 내 위치정보버튼 -->
 <button type="button" class="btn btn-lg btn-primary" id="getMyPositionBtn" onclick="getCurrentPosBtn()">내 위치 가져오기</button>
 
 <!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
@@ -49,6 +49,7 @@ alert('위치 정보를 가져오는데 실패했습니다.');
 };
 
 //위치 가져오기 버튼 클릭시
+
 function getCurrentPosBtn(){
 navigator.geolocation.getCurrentPosition(locationLoadSuccess,locationLoadError);
 };
