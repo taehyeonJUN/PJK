@@ -18,4 +18,6 @@ public interface MemberDao {
 
 	void memJoin(MemberVo memberVo);
 
+	int memChk(MemberVo memberVo);
+
 }

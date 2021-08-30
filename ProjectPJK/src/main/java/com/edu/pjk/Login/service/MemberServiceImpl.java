@@ -42,5 +42,10 @@ public class MemberServiceImpl implements MemberService {
 	public void memJoin(MemberVo memberVo) {
 		memDao.memJoin(memberVo);
 	}
+	
+	@Override
+	public int memChk(MemberVo memberVo) {
+		return memDao.memChk(memberVo);
+	}
 
 }

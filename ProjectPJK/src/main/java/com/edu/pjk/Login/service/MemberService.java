@@ -22,4 +22,7 @@ public interface MemberService {
 
 	/*회원가입*/
 	void memJoin(MemberVo memberVo);
+
+	/*아이디 중복 체크*/
+	int memChk(MemberVo memberVo);
 }

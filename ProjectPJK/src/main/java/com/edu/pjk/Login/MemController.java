@@ -1,5 +1,6 @@
 package com.edu.pjk.Login;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edu.pjk.Login.service.MemberService;
+
 
 @Controller
 @RequestMapping("/mem")
@@ -120,6 +124,25 @@ public class MemController {
 	
 	/*회원정보 삭제(물리)*/
 	
+	/*아이디 중복검사*/
+	@ResponseBody
+	@PostMapping("/memChk")
+	public int memChk(@RequestBody MemberVo memberVo) {	
+		
+		int chk = memberService.memChk(memberVo);
+//		String result = "";
+//		if(chk>0) {
+//			result = "중복된 아이디 입니다.";
+//
+//		}else {
+//			result = "사용 가능한 아이디 입니다.";
+//		}
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("chk", chk);
+		
+		
+		return chk;
+	}
 	
 	
 

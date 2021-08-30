@@ -45,4 +45,9 @@ public class MemberDaoImpl implements MemberDao {
 		sql.insert("mem.memJoin",memberVo);
 	}
 
+	@Override
+	public int memChk(MemberVo memberVo) {
+		return sql.selectOne("mem.memChk", memberVo);
+	}
+	
 }
