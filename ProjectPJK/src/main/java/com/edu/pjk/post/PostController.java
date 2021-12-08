@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.edu.pjk.Login.MemberVo;
 import com.edu.pjk.post.service.PostService;
 
-
 @Controller("/post")
 public class PostController {
 
@@ -24,11 +23,13 @@ public class PostController {
 	/*작성자와 상관 없이 최근것만 노출되는것으로!*/
 	/*쿼리 만들때 rnum 부여해서 페이지 구분. 매개변수로 몇번쨰 페이지 가져오는지 지정하는걸로?*/
 	/*일단 당장은 그냥 최근 5개만 가져오기*/
+	@PostMapping("/list")
 	public String PostList(Map map) {
-
+		
 		List<PostVo> postVo = postService.PostList();
-
-		return "";
+		
+		//일단은 주소창으로 직접 전송하고, 추후 제이슨 방식으로 바꾸고, Map타입 변수로 전송방법 변경할것. 
+		return "/post/list";
 	}
 
 

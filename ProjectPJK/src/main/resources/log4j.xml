@@ -35,11 +35,15 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
+	<logger name = "org.mybatis" level = "DEBUG" additivity = "false">
+		<appender-ref ref = "console" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>
 	<!-- 	경고메세지보다 중요한것을 콘솔에 출력 -->
-		<priority value="warn" />
+		<priority value="DEBUG" />
 		<appender-ref ref="console" />
 	</root>
 	

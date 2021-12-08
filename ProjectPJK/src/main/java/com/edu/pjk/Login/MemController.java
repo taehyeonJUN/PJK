@@ -40,16 +40,31 @@ public class MemController {
 	public String login(MemberVo memberVo , HttpSession session) {
 		MemberVo memlogin = memberService.memlogin(memberVo);
 		
-		if (memlogin == null) {
+		try {
+			if (memlogin == null) {
+				return "redirect:/";
+			}
+			else
+				session.setAttribute("user", memlogin);
+			return "main/main";
+			
+		} catch (Exception e) {
+			System.out.println("로그인 도중 문제가 발생했습니다.");
 			return "redirect:/";
 		}
-		else
-			session.setAttribute("user", memlogin);
 		
-		
-		return "main/main";
+
 	}
 	
+	//로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		//세션 초기화
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 	
 	
 	/*해쉬맵 사용?*/
@@ -84,6 +99,7 @@ public class MemController {
 
 		memberService.memEdit(memberVo);
 		
+		//폴더명 + jsp파일명
 		return "main/main";
 	}
 	
@@ -123,6 +139,8 @@ public class MemController {
 	
 	
 	/*회원정보 삭제(물리)*/
+	//미구현
+	
 	
 	/*아이디 중복검사*/
 	@ResponseBody

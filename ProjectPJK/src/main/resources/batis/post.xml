@@ -7,14 +7,11 @@
 		/*페이지네이션?*/
 		/*게시글 조회(최근 5개만)*/
 		SELECT
-		postNo,postId,postTitle,postContents,postUpDate
-		FROM (SELECT
-		postNo,postId,postTitle,postContents,postUpDate
-		FROM
-		PJK_POST
-		WHERE
-		POSTCHECKDEL ='N'
-		ORDER BY postUpDate DESC)
+			postNo,postId,postTitle,postContents,postUpDate
+		FROM (SELECT postNo,postId,postTitle,postContents,postUpDate
+				FROM PJK_POST
+				WHERE POSTCHECKDEL ='N'
+			ORDER BY postUpDate DESC)
 		WHERE ROWNUM  <![CDATA[<]]>=5
 	</select>
 

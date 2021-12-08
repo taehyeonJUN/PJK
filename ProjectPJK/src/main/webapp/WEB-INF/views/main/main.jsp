@@ -22,7 +22,7 @@
 		
 	}
 
-////////내 위치정보를 가져오는 스크립트
+//내 위치정보를 가져오는 스크립트
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 	mapOption = {
 		center : new kakao.maps.LatLng(37.56646, 126.98121), // 지도의 중심좌표
@@ -62,6 +62,7 @@
 	//위치 가져오기 버튼 클릭시 현재 위치 표시.
 
 	function getCurrentPosBtn() {
+
 		navigator.geolocation.getCurrentPosition(locationLoadSuccess,
 				locationLoadError);
 	};
@@ -76,10 +77,20 @@
 		<h1>여기가 메인화면!</h1>
 
 		<div>
+			<a href="/mem/logout">로그아웃</a>
+		</div>
+		<div>
 			<a href="/mem/memList">회원목록</a>
 		</div>
 		<div>
 			<a href="/mem/memEdit">회원정보</a>
+		</div>
+
+		<div>
+			<a href="/mem/memEdit">일정등록</a>
+		</div>
+		<div>
+			<a href="/mem/memEdit">일정확인</a>
 		</div>
 
 

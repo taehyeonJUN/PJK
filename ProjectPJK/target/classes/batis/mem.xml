@@ -24,6 +24,7 @@
 	</select>
 
 	<update id="memEdit1" parameterType="MemberVo">
+	/*수정하면서 수정 차수 늘어나게 쿼리 변경필요함.*/
 		UPDATE PJK_MEMBER
 		SET MEMCHECKDEL = 'Y'
 		WHERE MEMID = #{memId} AND MEMCHECKDEL = 'N'
@@ -34,14 +35,13 @@
 		<selectKey keyProperty="memNo" resultType="String" order="BEFORE">
 		SELECT SEQ_MEMNO.NEXTVAL FROM DUAL
 		</selectKey>
-
+		/*insert 하면서 subquery사용보다 impl단에서 select문 호출하여 정보 가저와서 필요한 부분만 수정하여 값을 넣은게 나을듯.(subquery 두번은 비효율적인듯)*/
 		INSERT INTO PJK_MEMBER(MEMNO,MEMID,MEMPASS,MEMNAME,memCount,MEMJOINDATE)
-		VALUES(#{memNo},#{memId},#{memPass},#{memName},(
-											SELECT MAX(memCount)
-											  FROM PJK_MEMBER
-										  	 WHERE memid = #{memId} AND memCheckDel = 'Y')+1,(SELECT Min(MEMJOINDATE) 
-										  													FROM PJK_MEMBER 
-										  													WHERE memid = #{memId}))
+		VALUES(#{memNo},#{memId},#{memPass},#{memName},(SELECT MAX(memCount)
+											  			FROM PJK_MEMBER
+										  				 WHERE memid = #{memId} AND memCheckDel = 'Y')+1,(SELECT Min(MEMJOINDATE) 
+										  																	FROM PJK_MEMBER 
+										  																	WHERE memid = #{memId}))
 	</insert>
 	
 	
@@ -60,7 +60,7 @@
 	<update id="memDel" parameterType="MemberVo">
 		
 		UPDATE PJK_MEMBER
-		   SET MEMCHECKDEL = 'Y' , memCount = memCount + 1
+		   SET MEMCHECKDEL = 'Y', memCount = memCount + 1
 		 WHERE MEMID = #{memId} AND MEMCHECKDEL = 'N'
 
 	</update>

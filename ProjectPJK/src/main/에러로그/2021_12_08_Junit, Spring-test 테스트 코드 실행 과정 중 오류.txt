@@ -1,0 +1,41 @@
+spring-test, Junit 
+테스트 코드 실행 과정 중 오류(2021/12/08)
+
+실행코드 참조 : https://codevang.tistory.com/259
+
+오류 1
+threw NamingException with message: Name [spring.liveBeansView.mbeanDomain]
+>
+web.xml에 아래 구문 추가
+> mbeans를 사용하지 않아서 생긴 문제. 아래 방법으로 해결
+참조 : https://stackoverflow.com/questions/23750619/spring-jndi-namingexception-name-spring-livebeansview-mbeandomain-is-not-boun
+
+<context-param>  
+    <param-name>spring.profiles.active</param-name>  
+    <param-value>dev</param-value>  
+</context-param>  
+<context-param>  
+    <param-name>spring.profiles.default</param-name>  
+    <param-value>dev</param-value>  
+</context-param>
+<context-param>  
+    <param-name>spring.liveBeansView.mbeanDomain</param-name>  
+    <param-value>dev</param-value>  
+</context-param>  
+
+오류 2 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+테스트 junit클래스에 @WebAppConfiguration 추가
+참조 : https://codingwanee.tistory.com/entry/%EB%94%94%EB%B2%84%EA%B7%B8-Spring-jUnit-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%A0%9C%EC%9D%B4%EC%9C%A0%EB%8B%9B-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%97%90%EC%84%9C-javalangIllegalStateException-Failed-to-load-ApplicationContext
+
+
+오류 3
+java.lang.NoClassDefFoundError: javax/servlet/SessionCookieConfig
+>> 서블릿 버전이 낮아서 생긴 문제
+참조 : https://gdtbgl93.tistory.com/164
+
+오류 4
+java.lang.ExceptionInInitializerError
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+> 어노테이션 SpringJUnit4ClassRunner을 쓰려면 jUnit을 4.12 이상써야함
+참조 :https://velog.io/@shson/JUnit-%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%8B%9C-java.lang.ExceptionInInitializerError-%EC%97%90%EB%9F%AC

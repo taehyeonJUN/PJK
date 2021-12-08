@@ -12,7 +12,7 @@
 		<div>
 			<form action="/mem/login" method="post">
 				<input type="text" name="memId" id="id">
-				<input type="text" name="memPass" id="pw">
+				<input type="password" name="memPass" id="pw">
 				<input type="submit" value="LOGIN">
 			</form>
 		</div>
