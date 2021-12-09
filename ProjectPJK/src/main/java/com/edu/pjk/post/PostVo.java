@@ -16,10 +16,10 @@ public class PostVo {
 	private String postContents;
 	
 	/*게시일자*/
-	private String postUpdate;
+	private Date postUpdate;
 	
 	/*삭제여부*/
-	private Date postCheckDel;
+	private String postCheckDel;
 	
 	/*수정횟수*/
 	private int postCount;
@@ -49,16 +49,16 @@ public class PostVo {
 	public void setPostContents(String postContents) {
 		this.postContents = postContents;
 	}
-	public String getPostUpdate() {
+	public Date getPostUpdate() {
 		return postUpdate;
 	}
-	public void setPostUpdate(String postUpdate) {
+	public void setPostUpdate(Date postUpdate) {
 		this.postUpdate = postUpdate;
 	}
-	public Date getPostCheckDel() {
+	public String getPostCheckDel() {
 		return postCheckDel;
 	}
-	public void setPostCheckDel(Date postCheckDel) {
+	public void setPostCheckDel(String postCheckDel) {
 		this.postCheckDel = postCheckDel;
 	}
 	public int getPostCount() {

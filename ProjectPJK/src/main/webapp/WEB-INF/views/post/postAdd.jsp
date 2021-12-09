@@ -10,14 +10,14 @@
 <body>
 
 	<div>
-		<form action="add" method="post">
+		<form action="postAdd" method="post">
 		
 			<div>
 				<input type="text" name="postTitle"/>
 			</div>
 
 			<div>
-				<textarea name="postTitle" placeholder="내용입력" rows="20" cols="30"></textarea>
+				<textarea name="postContents" placeholder="내용입력" rows="20" cols="30"></textarea>
 			</div>
 			
 			<div>

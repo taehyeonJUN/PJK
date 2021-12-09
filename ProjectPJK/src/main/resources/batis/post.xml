@@ -3,7 +3,7 @@
 
 <mapper namespace="post">
 
-	<select id="PostList">
+	<select id="PostList" resultType="postVo">
 		/*페이지네이션?*/
 		/*게시글 조회(최근 5개만)*/
 		SELECT

@@ -59,7 +59,14 @@
 		</interceptor>
 	</interceptors>
 
+<!-- @Transaction 을 사용한 트랜젝션 설정을 활성화 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+<!-- <tx:annotation-driven/> -->
 
+<!-- 스프링에서 트랜젝션 처리를 위한 트랜젝션매니저 객체 등록 -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
 
 	
 

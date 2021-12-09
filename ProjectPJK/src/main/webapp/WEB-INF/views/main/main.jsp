@@ -87,10 +87,10 @@
 		</div>
 
 		<div>
-			<a href="/mem/memEdit">일정등록</a>
+			<a href="/post/postAdd">일정등록</a>
 		</div>
 		<div>
-			<a href="/mem/memEdit">일정확인</a>
+			<a href="/post/postList">일정확인</a>
 		</div>
 
 
