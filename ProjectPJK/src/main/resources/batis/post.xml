@@ -30,9 +30,9 @@
 	</select>
 
 	<update id="PostEdit">
-		/*게시글 수정 -물리*/
+		/*게시글 수정 -논리*/
 		UPDATE PJK_POST SET
-		postTitle=#{postTitle} ,postContents=#{postContents} WHERE postNo = #{postNo} AND POSTCHECKDEL='N'
+		postTitle= #{postTitle} ,postContents=#{postContents} WHERE postNo = #{postNo} AND POSTCHECKDEL='N'
 	</update>
 
 
