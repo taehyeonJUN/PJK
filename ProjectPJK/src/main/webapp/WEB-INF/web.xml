@@ -44,6 +44,8 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+
 	
 	<!-- 국제화 utf8설정 -->
 <!-- 	post방식으로 전송되는 한글 파라미터 값을 위한 인코딩필터 등록 -->

@@ -15,14 +15,28 @@
 
 	<!-- 데이터베이스 연결을 담당하는 데이터소스로서 Common DBCP를 등록 -->
 	<bean id="dataSource"	class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName"
-			value="oracle.jdbc.OracleDriver"></property>
-		<property name="url"
-			value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
 		<property name="username" value="PJK"></property>
 		<property name="password" value="1234"></property>
-
 	</bean>
+
+<!-- 	<bean id = "dataSourceSpied" class = "org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> -->
+<!-- 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" /> -->
+<!-- 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
+<!-- 		<property name="username" value="PJK" /> -->
+<!-- 		<property name="password" value="1234" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id = "dataSource" class ="net.sf.log4jdbc.Log4jdbcProxyDataSource"> -->
+<!-- 		<constructor-arg ref = "dataSourceSpied" /> -->
+<!-- 		<property name = "logFormatter"> -->
+<!-- 			<bean class = "net.sf.log4jdbc.tools.Log4jdbcCustomFormatter"> -->
+<!-- 				<property name="loggingType" value="MULTI_LINE"></property>			 -->
+<!-- 				<property name="sqlPrefix" value="SQL:::"></property>			 -->
+<!-- 			</bean> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 
 
 	<!-- 마이 바티스 SqlSessionFactory 객체를 생성하여 스프링에 등록 -->

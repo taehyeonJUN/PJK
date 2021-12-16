@@ -11,14 +11,52 @@
 
 <!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
+//FullCalender 라이브러리 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+
+
+// 카카오 지도 라이브러리 초기화
 // 화면 초기화(현재위치 설정.) 
 	window.onload = function(){
-		navigator.geolocation.getCurrentPosition(locationLoadSuccess,
+	
+	navigator.geolocation.getCurrentPosition(locationLoadSuccess,
 				locationLoadError);
+	
+
+	}
+	
+	
+	function calender() {
+		var today = new Date();
+		var year = today.getYear()+1;
+		var month = today.getMonth()+1;
+		var day = today.getDay()+1;
+		
+		var firstDay = new Date(year, month, 1);
+		var fDay = firstDay.getDate();
+		var lastDay = new Date(year, month, 0);
+		var lDay = lastDay.getDate();
+		console.log(fDay);
+		console.log(lDay);
+		
+		var calender = document.getElementById('calenderType');
+		for (var i = 0; i < 5; i++) {
+			const newCell = calender.rows[i].insertRow(-1);
+			newCell.innerText = 'new';
+			
+		}
 		
 	}
 
@@ -118,6 +156,8 @@
 
 	</div>
 
+<!-- fullCalender 달력 화면이 출력되는 위치 -->
+	<div id='calendar'></div>
 
 
 
